@@ -1,0 +1,45 @@
+version: '3.2'
+services:
+  datashield:
+    container_name: datashield_datashield
+    image: datashield_client
+    networks:
+    - opal_net
+    tty: true
+  opal:
+    container_name: datashield_opal
+    image: obiba/opal:snapshot
+    ports:
+    - "8843:8443"
+    - "8880:8080"
+    networks:
+    - opal_net
+    environment:
+    - OPAL_ADMINISTRATOR_PASSWORD=password
+    volumes:
+    - /tmp/opal:/srv
+  rserver:
+    container_name: datashield_rserver
+    image: obiba/opal-rserver:snapshot
+    ports:
+    - "6612:6312"
+    - "6611:6311"
+    networks:
+    - opal_net
+  agate:
+    container_name: datashield_agate
+    image: obiba/agate:snapshot
+    ports:
+    - "8844:8444"
+    - "8881:8081"
+    networks:
+      - opal_net
+    volumes:
+    - /tmp/agate:/srv
+  mongo:
+    container_name: datashield_mongo
+    image: mongo
+    networks:
+    - opal_net
+networks:
+  opal_net:
