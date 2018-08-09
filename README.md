@@ -1,6 +1,6 @@
 # datashield_docker
 
-OPAL and OBIBA
+## OPAL and OBIBA
 DataShield requires Opal to be installed - see:
 
 OPAL: Opal is the OBiBa’s core database application for epidemiological studies. It is used to build study's central data repositories that integrate under a uniform interface data collected from multiple sources (including Onyx). Using Opal, studies can import, validate, derive, query, report, analyse and export data.
@@ -11,8 +11,9 @@ https://github.com/obiba/docker-opal
 
 
 
-DataShield and Opal example Docker environment
-STEP 1 - checkout the example docker repository
+## DataShield and Opal example Docker environment
+
+### STEP 1 - checkout the example docker repository
 in your favourite folder execute the following command:
 git clone git@github.com:juliangruendner/datashield_docker.git
 
@@ -22,7 +23,7 @@ https://github.com/juliangruendner/datashield_docker.git
 
 
 
-STEP 2 - Configure OPAL - R server Connection
+### STEP 2 - Configure OPAL - R server Connection
 
 the r server connection still needs to be configured, for this navigate to the folder "/tmp/opal/conf" on your docker host
 
@@ -31,12 +32,12 @@ org.obiba.opal.Rserve.host=<insert name of docker rserver container here "e.g. d
 
 your r server container name sould be "datashield_rserver" if you have changed the docker-compose as described above.
 
-STEP 3 - start your datashield environment
+### STEP 3 - start your datashield environment
 
 nagivate to your repo folder in your command line and execute
 docker-compose up
 
-STEP 4 - Configure mongo db Connection
+### STEP 4 - Configure mongo db Connection
 
 In your browser go to http://localhost:8880/ui/index.html
 
@@ -50,7 +51,7 @@ go to Administration > Databases and edit the db Connections
 example db connection for docker container "mongodb://datashield_mongo/opal_data"
 note that the part datashield_mongo might change with your docker configuration so double check your container names
 
-STEP 5 - Test the R Server with Test Data
+### STEP 5 - Test the R Server with Test Data
 Execute the following steps of this website
 https://wiki.obiba.org/display/OPALDOC/How+to+install+and+use+Opal+and+DataSHIELD+for+Data+Harmonization+and+Federated+Analysis
 :
@@ -61,7 +62,8 @@ to
 o <- opal.login(username='administrator', password='password', url='http://localhost:8880')
 to avoid ssh connection problems
 
-STEP 6 - Setup data for Testing
+### STEP 6 - Setup data for Testing
+
 Execute the following steps of this website
 
 Download the Test data here:
@@ -72,13 +74,9 @@ https://wiki.obiba.org/download/attachments/42894059/LifeLines.sav?version=1&mod
 
 In your browser go to http://localhost:8880/ui/index.html
 
-
-
 login to the administration interface using:
 username: administrator
 password: password
-
-
 
 Some test data will be imported from a file. This file needs to be accessible from the Opal server. For that purpose, Opal has a "file system" where the data files can be uploaded.
 
@@ -123,7 +121,8 @@ Keep the default setting for data file archiving and click on the "Finish" butto
 
 You can follow the import task progress by going to the tasks section of the project page. Once importation is completed successfully, the LifeLines table should appear in the tables section of the project page.
 
-STEP 8 - configure a datashield and datashield user on opal entity
+### STEP 7 - configure a datashield and datashield user on opal entity
+
 Initialise DataShield on Opal server
 Each server in the network must be configured the same way so that same computation is done in each Opal for one client request. This is done by using the DataSHIELD-R packages repository.
 
@@ -171,7 +170,9 @@ Click on “Add Permission”.
 Select “Add user permission”.
 Type “test” in the name field.
 Leave the default value of “View dictionary and summaries” and click on “Save”.
-STEP 9 - Login to your R Server and test the connection to your opal entity
+
+### STEP 8 - Login to your R Server and test the connection to your opal entity
+
 on your command line execute:
 
 docker exec -it datashield_datashield bash
