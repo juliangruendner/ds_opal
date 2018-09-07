@@ -2,7 +2,9 @@ version: '3.2'
 services:
   datashield:
     container_name: datashield_datashield
-    image: datashield_client
+    build:
+      context: .
+      dockerfile: Dockerfile.datashield_client
     networks:
     - opal_net
     tty: true
