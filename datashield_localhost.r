@@ -16,8 +16,8 @@ library(dsModellingClient)
 server <- c("datashield_opal")
 # note the datashield_opal only works from inside this docker container
 #url <- c("127.0.0.1:8880")
-url <- c("https://localhost:8843")
-#url <- c("https://localhost:8001")
+#url <- c("https://localhost:8843")
+url <- c("https://localhost:8001")
 # ^^^ Note this specifies the port number
 user <- "administrator"
 password <- "password"
