@@ -3,8 +3,8 @@ from ubuntu:latest
 #add datashield example R
 ADD ./datashield.r /datashield/datashield.r
 
-RUN apt apt-get update && \
-apt-get install gnupg
+RUN apt-get update && \
+apt-get install gnupg -y
 
 # install r and datashield dev packages
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys E084DAB9
