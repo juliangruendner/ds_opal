@@ -576,6 +576,12 @@ for the following one:
   </extensions>
 ```
 
+Now restart your opal container: 
+```bash
+./stop_prod.sh
+./start_prod.sh
+```
+
 ### STEP 9 - Login to your R Server and test the connection to your opal entity
 
 To test your connection to the opal server locally u have to install R - skip this step if you do not want to install R.
@@ -585,5 +591,5 @@ install R: `./install_r.sh`
 navigate to your Repo and execute the R testscript by executing the following command:
 
 ```bash
-R -f datashield_localhost.r
+R -f datashield_localhost_no_proxy.r
 ```

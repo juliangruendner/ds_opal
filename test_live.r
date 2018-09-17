@@ -18,7 +18,7 @@ server <- c("datashield_opal")
 url <- c("https://gruendner.imi.uni-erlangen.de:443")  # Ur quserver host or ip address here
 # ^^^ Note this specifies the port number
 user <- "administrator"
-password <- "password"
+password <- "password"  # use your password, which u have set during installation
 table <- c("test.LifeLines")
 # ^^^ note that this reflects the folder hierarchy that can be seen via the OPAL web interface
 
