@@ -1,5 +1,8 @@
 from ubuntu:latest
 
+#set environment variable to supress user interaction
+ENV DEBIAN_FRONTEND noninteractive
+
 #add datashield example R
 ADD ./datashield.r /datashield/datashield.r
 
