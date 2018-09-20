@@ -39,3 +39,4 @@ services:
     - opal_net
 networks:
   opal_net:
+    name: datashield_docker_opal_net
