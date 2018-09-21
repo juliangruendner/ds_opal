@@ -9,7 +9,7 @@ services:
     networks:
     - opal_net
     environment:
-    - OPAL_ADMINISTRATOR_PASSWORD=password
+    - OPAL_ADMINISTRATOR_PASSWORD=${OPAL_ADMIN_PASS}
     volumes:
     - ./ds_data/opal:/srv
   rserver:
