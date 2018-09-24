@@ -10,7 +10,7 @@ sleep 60
 ./stop_prod.sh
 
 echo "Configruing opal r server"
-sed -i '' 's/#org.obiba.opal.Rserve.host=/org.obiba.opal.Rserve.host=datashield_rserver/g' ds_data/opal/conf/opal-config.properties
+sed -i 's/#org.obiba.opal.Rserve.host=/org.obiba.opal.Rserve.host=datashield_rserver/g' ds_data/opal/conf/opal-config.properties
 
 ./start_prod.sh
 
