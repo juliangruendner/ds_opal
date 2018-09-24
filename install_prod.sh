@@ -1,6 +1,7 @@
 # set opal admin and password
-export ADMIN='administrator'
-export OPAL_ADMIN_PASS='password'
+export ADMIN=${ADMIN:='administrator'}
+export OPAL_ADMIN_PASS=${OPAL_ADMIN_PASS:='password'}
+
 
 echo "Initialising Opal ..."
 ./start_prod.sh
@@ -71,6 +72,4 @@ echo "finished setting up Opal  - installing R on VM now to allow tests to run"
 # finally install R on vm for test purposes
 # ./install_r.sh
 
-
-echo "R intsalled and opal set up - you are ready to go"
-
+printf "R intsalled and opal set up - you are ready to go \n"
