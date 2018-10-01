@@ -13,7 +13,7 @@ sed -i 's/#org.obiba.opal.Rserve.host=/org.obiba.opal.Rserve.host=datashield_rse
 
 ./start_prod.sh
 
-printf "sleep for a bit (1 minute) to wait for opal to start up ...\n"
+printf "sleep for a bit (60 seconds) to wait for opal to start up ...\n"
 sleep 60
 
 printf "Begin Configure Test data an Project ...\n"
