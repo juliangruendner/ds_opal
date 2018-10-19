@@ -1,5 +1,4 @@
 # set opal admin and password
-export ADMIN=${ADMIN:='administrator'}
 export OPAL_ADMIN_PASS=${OPAL_ADMIN_PASS:='password'}
 export R_SERVER_HOST=${R_SERVER_HOST:='datashield_rserver'}
 
