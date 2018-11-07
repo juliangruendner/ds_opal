@@ -22,7 +22,7 @@ printf "Begin Configure Test data an Project ...\n"
 cd ../ds_test && docker-compose up -d
 cd ../datashield_docker
 
-
+ADMIN='administrator'
 
 printf "done sleeping, time to configure opal ...\n"
 
@@ -42,12 +42,16 @@ docker exec ds_test sh -c "opal import-spss --opal https://datashield_opal:8443 
 
 # create a test user
 docker exec ds_test sh -c "opal user --opal https://datashield_opal:8443 --user $ADMIN --password $OPAL_ADMIN_PASS --add --name test --upassword test123"
-sleep 10.
+sleep 10
 # give test user permission to access lifeLines table
 docker exec ds_test sh -c "opal perm-table --opal https://datashield_opal:8443 --user $ADMIN --password $OPAL_ADMIN_PASS --type USER --project test --subject test  --permission view --add --tables LifeLines"
 
 # give test user permission to use datashield
 docker exec ds_test sh -c "opal perm-datashield --opal https://datashield_opal:8443 --user $ADMIN --password $OPAL_ADMIN_PASS --type USER --subject test --permission use --add"
+
+#
+docker exec ds_test sh -c "opal rest --opal https://datashield_opal:8443 --user $ADMIN --password $OPAL_ADMIN_PASS -m POST '/datashield/packages?name=datashield'"
+
 
 cd ../ds_test && docker-compose stop
 cd ../datashield_docker
@@ -59,9 +63,6 @@ printf "Installing datashield R packages on R server ...\n"
 # install datashield packages
 docker exec datashield_rserver R -e "install.packages('datashield', repos=c('https://cran.rstudio.com','https://cran.obiba.org'), dependencies=TRUE)"
 
-##initialise datashield configuraton in opal
-python3 insert_base_ds_config.py
-
 printf "Finished installing R packages on R server ...\n"
 
 printf "Restarting opal to update opal configurations ...\n"
@@ -69,7 +70,7 @@ printf "Restarting opal to update opal configurations ...\n"
 ./stop_prod.sh
 ./start_prod.sh
 
-echo "finished setting up Opal  - installing R on VM now to allow tests to run"
+printf "finished setting up Opal  - installing R on VM now to allow tests to run \n"
 
 # finally install R on vm for test purposes
 # ./install_r.sh
