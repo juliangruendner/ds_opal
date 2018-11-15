@@ -38,7 +38,7 @@ echo '{"name":"test","title":"test", "database": "test"}' | docker exec --intera
 docker exec ds_test sh -c "opal file --opal https://datashield_opal:8443 -u $ADMIN -p $OPAL_ADMIN_PASS -up /testdata/LifeLines.sav /projects"
 
 # import the needed csv files to the test project
-docker exec ds_test sh -c "opal import-spss --opal https://datashield_opal:8443 -u $ADMIN -p $OPAL_ADMIN_PASS --destination test --path /projects/LifeLines.sav"
+docker exec ds_test sh -c "opal import-r-spss --opal https://datashield_opal:8443 -u $ADMIN -p $OPAL_ADMIN_PASS --destination test --path /projects/LifeLines.sav"
 
 # create a test user
 docker exec ds_test sh -c "opal user --opal https://datashield_opal:8443 --user $ADMIN --password $OPAL_ADMIN_PASS --add --name test --upassword test123"
