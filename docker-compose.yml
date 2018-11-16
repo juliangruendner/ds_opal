@@ -31,6 +31,8 @@ services:
   mongo:
     container_name: datashield_mongo
     image: mongo
+    ports:
+    - "27017:27017"
     volumes:
     - ./ds_data/mongo_data:/data/db
     networks:
