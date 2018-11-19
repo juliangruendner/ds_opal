@@ -34,11 +34,20 @@ echo '{"name":"test","defaultStorage":false, "usage": "STORAGE", "mongoDbSetting
 echo '{"name":"test","title":"test", "database": "test"}' | docker exec --interactive ds_test sh -c "opal rest --opal https://datashield_opal:8443 -u $ADMIN -p $OPAL_ADMIN_PASS --content-type 'application/json' -m POST /projects"
 
 
+# install spss import plugin
+docker exec --interactive ds_test sh -c "opal rest --opal https://datashield_opal:8443 -u $ADMIN -p $OPAL_ADMIN_PASS --content-type 'application/json' -m POST /plugins?name=opal-datasource-spss&version=1.0.1" 
+./stop_prod.sh
+./start_prod.sh
+
+printf " restart opal for the new spss import plugin to take effect, then sleep for a bit (60 seconds) to wait for opal to start up ...\n"
+sleep 60
+
+
 # upload the needed lifeLines files
 docker exec ds_test sh -c "opal file --opal https://datashield_opal:8443 -u $ADMIN -p $OPAL_ADMIN_PASS -up /testdata/LifeLines.sav /projects"
 
-# import the needed csv files to the test project
-docker exec ds_test sh -c "opal import-r-spss --opal https://datashield_opal:8443 -u $ADMIN -p $OPAL_ADMIN_PASS --destination test --path /projects/LifeLines.sav"
+# import the needed spss files to the test project
+docker exec ds_test sh -c "opal import-plugin --opal https://datashield_opal:8443 -u $ADMIN -p $OPAL_ADMIN_PASS --name opal-datasource-spss --config '/testdata/config_test.json' --destination test"
 
 # create a test user
 docker exec ds_test sh -c "opal user --opal https://datashield_opal:8443 --user $ADMIN --password $OPAL_ADMIN_PASS --add --name test --upassword test123"
@@ -49,21 +58,12 @@ docker exec ds_test sh -c "opal perm-table --opal https://datashield_opal:8443 -
 # give test user permission to use datashield
 docker exec ds_test sh -c "opal perm-datashield --opal https://datashield_opal:8443 --user $ADMIN --password $OPAL_ADMIN_PASS --type USER --subject test --permission use --add"
 
-#
+# install datashield packages
 docker exec ds_test sh -c "opal rest --opal https://datashield_opal:8443 --user $ADMIN --password $OPAL_ADMIN_PASS -m POST '/datashield/packages?name=datashield'"
 
 
 cd ../ds_test && docker-compose stop
 cd ../datashield_docker
-
-printf "Successfully Configured Test data an Project \n"
-
-printf "Installing datashield R packages on R server ...\n"
-
-# install datashield packages
-docker exec datashield_rserver R -e "install.packages('datashield', repos=c('https://cran.rstudio.com','https://cran.obiba.org'), dependencies=TRUE)"
-
-printf "Finished installing R packages on R server ...\n"
 
 printf "Restarting opal to update opal configurations ...\n"
 
