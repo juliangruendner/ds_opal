@@ -10,6 +10,9 @@ services:
     - opal_net
     environment:
     - OPAL_ADMINISTRATOR_PASSWORD=${OPAL_ADMIN_PASS}
+    - RSERVER_PORT_6312_TCP_ADDR=${R_SERVER_HOST}
+    - MONGODBHOST=${OPAL_MONGODB_HOST}
+    - INITTESTDATA=true
     volumes:
     - ./ds_data/opal:/srv
   rserver:
@@ -29,4 +32,4 @@ services:
     - opal_net
 networks:
   opal_net:
-    name: datashield_docker_opal_net
+    name: ds_opal_opal_net

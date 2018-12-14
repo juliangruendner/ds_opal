@@ -1,4 +1,4 @@
-# datashield_docker
+# ds_opal
 
 ## OPAL and OBIBA
 DataShield requires Opal to be installed - see:
