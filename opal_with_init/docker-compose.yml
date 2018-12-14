@@ -1,7 +1,7 @@
 version: '3.5'
 services:
   opal:
-    container_name: ds_opal
+    container_name: datashield_docker
     image: opal:docker
     networks:
       - opal_net
@@ -54,4 +54,4 @@ services:
     - MYSQL_PASSWORD=password
 networks:
   opal_net:
-    name: ds_opal_opal_net_test
+    name: datashield_docker_opal_net_test
