@@ -89,7 +89,7 @@ if [ "$INITTESTDATA" == "true" ]
 	then
 
 	# init spss plugin
-	echo '' | opal rest --opal https://localhost:8443 -u administrator -p $OPAL_ADMINISTRATOR_PASSWORD --content-type 'application/json' -m POST '/plugins?name=opal-datasource-spss&version=1.0.1'
+	# echo '' | opal rest --opal https://localhost:8443 -u administrator -p $OPAL_ADMINISTRATOR_PASSWORD --content-type 'application/json' -m POST '/plugins?name=opal-datasource-spss&version=1.0.1'
 
 	# create a test project
 	echo '{"name":"test","title":"test", "database": "test"}' | opal rest --opal https://localhost:8443 -u administrator -p $OPAL_ADMINISTRATOR_PASSWORD --content-type 'application/json' -m POST /projects

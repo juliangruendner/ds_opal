@@ -1,1 +1,1 @@
-docker build -f Dockerfile -t opal:docker .
+docker build -f Dockerfile -t opal_docker .

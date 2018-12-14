@@ -2,7 +2,7 @@ version: '3.5'
 services:
   opal:
     container_name: datashield_opal
-    image: obiba/opal:latest
+    image: opal_docker:latest
     ports:
     - "8843:8443"
     - "8880:8080"
