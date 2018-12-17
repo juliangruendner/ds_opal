@@ -93,15 +93,15 @@ if [ "$INITTESTDATA" == "true" ]
 
 	echo "upload the needed test files files..."
 	opal file --opal https://localhost:8443 -u administrator -p $OPAL_ADMINISTRATOR_PASSWORD -up /testdata/LifeLines.sav /projects
-	opal file --opal https://localhost:8443 -u administrator -p password -up /testdata/CNSIM/CNSIM.zip /projects
-	opal file --opal https://localhost:8443 -u administrator -p password -up /testdata/DASIM/DASIM.zip /projects
+	opal file --opal https://localhost:8443 -u administrator -p $OPAL_ADMINISTRATOR_PASSWORD -up /testdata/CNSIM/CNSIM.zip /projects
+	opal file --opal https://localhost:8443 -u administrator -p $OPAL_ADMINISTRATOR_PASSWORD -up /testdata/DASIM/DASIM.zip /projects
 
 	echo "import the needed spss files to the test project..."
 	opal import-plugin --opal https://localhost:8443 -u  administrator -p  $OPAL_ADMINISTRATOR_PASSWORD --name opal-datasource-spss --config '/testdata/config_test.json' --destination test
 
 	echo "import the CNSIM and DASIM test files to the test project..."
-	opal import-xml --opal https://localhost:8443 --user administrator --password password --path /projects/CNSIM.zip --destination test
-	opal import-xml --opal https://localhost:8443 --user administrator --password password --path /projects/DASIM.zip --destination test
+	opal import-xml --opal https://localhost:8443 --user administrator --password $OPAL_ADMINISTRATOR_PASSWORD --path /projects/CNSIM.zip --destination test
+	opal import-xml --opal https://localhost:8443 --user administrator --password $OPAL_ADMINISTRATOR_PASSWORD --path /projects/DASIM.zip --destination test
 
 	echo "create a test user..."
 	opal user --opal https://localhost:8443 --user  administrator --password  $OPAL_ADMINISTRATOR_PASSWORD --add --name test --upassword test123
