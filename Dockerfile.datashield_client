@@ -4,7 +4,7 @@ from ubuntu:latest
 ENV DEBIAN_FRONTEND noninteractive
 
 #add datashield example R
-ADD ./datashield.r /datashield/datashield.r
+ADD ./datashield_test.r /datashield/datashield.r
 
 RUN apt-get update && \
 apt-get install gnupg -y

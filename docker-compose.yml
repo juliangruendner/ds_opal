@@ -10,7 +10,7 @@ services:
     tty: true
   opal:
     container_name: datashield_opal
-    image: obiba/opal:latest
+    image: opal_docker:latest
     ports:
     - "8843:8443"
     - "8880:8080"
@@ -18,6 +18,9 @@ services:
     - opal_net
     environment:
     - OPAL_ADMINISTRATOR_PASSWORD=password
+    - RSERVER_PORT_6312_TCP_ADDR=datashield_rserver
+    - MONGODBHOST=datashield_mongo
+    - INITTESTDATA=true
     volumes:
     - ./ds_data/opal:/srv
   rserver:
