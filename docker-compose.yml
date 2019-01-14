@@ -26,6 +26,9 @@ services:
   rserver:
     container_name: datashield_rserver
     image: obiba/opal-rserver:latest
+    volumes:
+    - ./ds_server_funcs:/ds_dev/ds_server_funcs
+    - ./ds_server_admin_server.sh:/ds_dev/ds_server_admin_server.sh
     ports:
     - "6612:6312"
     - "6611:6311"
