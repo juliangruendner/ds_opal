@@ -26,7 +26,7 @@ case "$COMMAND" in
             ;;
         
         * )
-            echo $"Usage: $0 {install|status}"
+            echo $"Usage: $0 {install|status} package_name"
             exit 1
 
 esac

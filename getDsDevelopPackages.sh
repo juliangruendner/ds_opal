@@ -1,7 +1,7 @@
 #!/bin/bash
 
 githubBase="git@github.com:datashield/"
-mlServiceRepos=("dsBase" "dsModelling" )
+mlServiceRepos=("dsBase" "dsModelling")
 baseDir="$(pwd)/ds_server_funcs"
 
 for repoName in ${mlServiceRepos[@]}
