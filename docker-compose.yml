@@ -23,6 +23,7 @@ services:
     - INITTESTDATA=true
     volumes:
     - ./ds_data/opal:/srv
+    - ./ds_data/auth:/auth
   rserver:
     container_name: datashield_rserver
     image: obiba/opal-rserver:latest
