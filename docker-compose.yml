@@ -24,6 +24,7 @@ services:
     volumes:
     - ./ds_data/opal:/srv
     - ./ds_data/auth:/auth
+    - ./ds_data/omop_importer:/omop_importer
   rserver:
     container_name: datashield_rserver
     image: obiba/opal-rserver:latest
