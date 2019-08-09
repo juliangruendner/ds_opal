@@ -41,7 +41,7 @@ if [ -e /opt/opal/bin/first_run.sh ]
 	done
 
     # install spss plugin
-    echo '' | opal rest --opal https://localhost:8443 -u administrator -p $OPAL_ADMINISTRATOR_PASSWORD --content-type 'application/json' -m POST '/plugins?name=opal-datasource-spss&version=1.0.1'
+    echo '' | opal rest --opal https://localhost:8443 -u administrator -p $OPAL_ADMINISTRATOR_PASSWORD --content-type 'application/json' -m POST '/plugins?name=opal-datasource-spss&version=1.1.0'
 
 
     echo "Restarting Opal and waiting for it to be ready..."

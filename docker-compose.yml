@@ -31,9 +31,6 @@ services:
     volumes:
     - ./ds_server_funcs:/ds_dev/ds_server_funcs
     - ./ds_server_admin_server.sh:/ds_dev/ds_server_admin_server.sh
-    ports:
-    - "6612:6312"
-    - "6611:6311"
     networks:
     - opal_net
   mongo:
