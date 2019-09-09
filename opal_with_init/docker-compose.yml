@@ -2,7 +2,7 @@ version: '3.5'
 services:
   opal:
     container_name: datashield_docker
-    image: opal:docker
+    image: opal_docker
     networks:
       - opal_net
     ports:
