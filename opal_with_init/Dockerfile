@@ -16,5 +16,6 @@ EXPOSE 8443 8080
 
 # Define default command.
 COPY ./docker-entrypoint.sh /
+COPY ./scripts /miracum
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["app"]
